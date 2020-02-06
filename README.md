@@ -1,16 +1,16 @@
-### Runeterra Dart
+## Runeterra Dart
 This project is a dart library for decoding and encoding decks in Legend of Runeterra.
 It is based on [RiotGames/LoRDeckCodes](https://github.com/RiotGames/LoRDeckCodes)
 
-### Install
+## Install
 If you wonder how to install you can check [LoRDeckCodesDart](https://pub.dev/packages/LoRDeckCodesDart)
 
-### How to use
+## How to use
 You can create deck like I showed down below.
 This deck is [Budget Elites (New Players)](https://lor.mobalytics.gg/decks/bojrj0dp0i9p574edqug) 
 from [lor.mobalytics.gg](https://lor.mobalytics.gg).
 
-## Decode
+### Decode
 ```dart
 List<CardCodeAndCount> deck = LoRDeckEncoder.GetDeckFromCode(
       'CEAQQAIAAECAMFBCEQTTMAQCAEBASGQFAEAAGCYSDUXQCAQBAADQY');  
@@ -36,7 +36,7 @@ List<CardCodeAndCount> deck = LoRDeckEncoder.GetDeckFromCode(
       deck[0].CardCode //01DE001
       deck[0].Count //3
 ```
-## Encode
+### Encode
 ```dart
   String code = LoRDeckEncoder.GetCodeFromDeck(deck);
   //CEAQQAIAAECAMFBCEQTTMAQCAEBASGQFAEAAGCYSDUXQCAQBAADQY
