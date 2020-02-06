@@ -1,6 +1,6 @@
 name: lor_deck_codes_dart
 description: Dart library for decoding and encoding decks in Legend of Runeterra.
-version: 1.0.0
+version: 1.0.0+4
 homepage: https://github.com/edenizk/lor_deck_codes_dart
 
 environment:

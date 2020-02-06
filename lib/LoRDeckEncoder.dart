@@ -30,7 +30,7 @@ class LoRDeckEncoder {
   //dart does't support static constructor,
   //until find something works like static constructor
   //we need to asign objects before constructor
-  LoRDeckEncoder() {}
+  //LoRDeckEncoder() {}
 
   static List<CardCodeAndCount> GetDeckFromCode(String code) {
     List<CardCodeAndCount> result = List<CardCodeAndCount>();
@@ -45,7 +45,7 @@ class LoRDeckEncoder {
     List<int> byteList = bytes.toList();
 
     //grab format and version
-    int format = bytes[0] >> 4;
+    //int format = bytes[0] >> 4;
     int version = bytes[0] & 0xF;
     byteList.removeAt(0);
     if (version > _max_known_version) {
@@ -119,19 +119,20 @@ class LoRDeckEncoder {
     List<CardCodeAndCount> ofN = <CardCodeAndCount>[];
 
     for (CardCodeAndCount ccc in deck) {
-      if (ccc.Count == 3)
+      if (ccc.Count == 3) {
         of3.add(ccc);
-      else if (ccc.Count == 2)
+      } else if (ccc.Count == 2) {
         of2.add(ccc);
-      else if (ccc.Count == 1)
+      } else if (ccc.Count == 1) {
         of1.add(ccc);
-      else if (ccc.Count < 1) {
-        throw ArgumentError("Invalid count of " +
+      } else if (ccc.Count < 1) {
+        throw ArgumentError('Invalid count of ' +
             ccc.Count.toString() +
-            " for card " +
+            ' for card ' +
             ccc.CardCode);
-      } else
+      } else {
         ofN.add(ccc);
+      }
     }
     //build the lists of set and faction combinations within the groups of similar card counts
     List<List<CardCodeAndCount>> groupedOf3s = _getGroupedOfs(of3.toList());
@@ -192,7 +193,7 @@ class LoRDeckEncoder {
   static List<List<CardCodeAndCount>> _getGroupedOfs(
       List<CardCodeAndCount> list) {
     List<List<CardCodeAndCount>> result = List<List<CardCodeAndCount>>();
-    while (list.length > 0) {
+    while (list.isNotEmpty) {
       List<CardCodeAndCount> currentSet = List<CardCodeAndCount>();
 
       //get info from first
