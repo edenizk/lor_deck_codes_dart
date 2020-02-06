@@ -3,7 +3,7 @@ This project is a dart library for decoding and encoding decks in Legend of Rune
 It is based on [RiotGames/LoRDeckCodes](https://github.com/RiotGames/LoRDeckCodes)
 
 ## Install
-If you wonder how to install you can check [LoRDeckCodesDart](https://pub.dev/packages/LoRDeckCodesDart)
+If you wonder how to install you can check [LoRDeckCodesDart](https://pub.dev/packages/lor_deck_codes_dart)
 
 ## How to use
 You can create deck like I showed down below.
