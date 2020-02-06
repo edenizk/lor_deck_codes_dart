@@ -41,3 +41,5 @@ List<CardCodeAndCount> deck = LoRDeckEncoder.GetDeckFromCode(
   String code = LoRDeckEncoder.GetCodeFromDeck(deck);
   //CEAQQAIAAECAMFBCEQTTMAQCAEBASGQFAEAAGCYSDUXQCAQBAADQY
 ```
+## Notes
+This package is using [fixnum](https://pub.dev/packages/fixnum) package for creating a fixed-width 32-bit integer in dart
