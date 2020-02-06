@@ -15,7 +15,7 @@ class Base32 {
   //dart does't support static constructor,
   //until find something works like static constructor
   //we need to asign objects before constructor
-  Base32() {}
+  //Base32() {}
 
   String getDigits() {
     return _digits;
@@ -123,5 +123,5 @@ class Base32 {
 }
 
 class DecodingException implements Exception {
-  DecodingException(String message) : super() {}
+  DecodingException(String message) : super();
 }
