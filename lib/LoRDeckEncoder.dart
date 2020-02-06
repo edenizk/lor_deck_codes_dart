@@ -33,7 +33,7 @@ class LoRDeckEncoder {
   LoRDeckEncoder() {}
 
   static List<CardCodeAndCount> GetDeckFromCode(String code) {
-    var result = List<CardCodeAndCount>();
+    List<CardCodeAndCount> result = List<CardCodeAndCount>();
 
     Uint8List bytes;
     try {
@@ -42,33 +42,33 @@ class LoRDeckEncoder {
       throw ArgumentError('Invalid deck code ' + e);
     }
 
-    var byteList = bytes.toList();
+    List<int> byteList = bytes.toList();
 
     //grab format and version
-    var format = bytes[0] >> 4;
-    var version = bytes[0] & 0xF;
+    int format = bytes[0] >> 4;
+    int version = bytes[0] & 0xF;
     byteList.removeAt(0);
     if (version > _max_known_version) {
       throw ArgumentError(
           "The provided code requires a higher version of this library; please update.");
     }
 
-    for (var i = 3; i > 0; i--) {
-      var numGroupOfs = VarintTranslator.PopVarint(byteList);
+    for (int i = 3; i > 0; i--) {
+      int numGroupOfs = VarintTranslator.PopVarint(byteList);
 
-      for (var j = 0; j < numGroupOfs; j++) {
-        var numOfsInThisGroup = VarintTranslator.PopVarint(byteList);
-        var set = VarintTranslator.PopVarint(byteList);
-        var faction = VarintTranslator.PopVarint(byteList);
+      for (int j = 0; j < numGroupOfs; j++) {
+        int numOfsInThisGroup = VarintTranslator.PopVarint(byteList);
+        int set = VarintTranslator.PopVarint(byteList);
+        int faction = VarintTranslator.PopVarint(byteList);
 
-        for (var k = 0; k < numOfsInThisGroup; k++) {
-          var card = VarintTranslator.PopVarint(byteList);
+        for (int k = 0; k < numOfsInThisGroup; k++) {
+          int card = VarintTranslator.PopVarint(byteList);
 
-          var setString = set.toString().padLeft(2, '0');
-          var factionString = _intIdentifierToFactionCode[faction];
-          var cardString = card.toString().padLeft(3, '0');
+          String setString = set.toString().padLeft(2, '0');
+          String factionString = _intIdentifierToFactionCode[faction];
+          String cardString = card.toString().padLeft(3, '0');
 
-          var newEntry =
+          CardCodeAndCount newEntry =
               CardCodeAndCount(setString + factionString + cardString, i);
           result.add(newEntry);
         }
@@ -78,16 +78,17 @@ class LoRDeckEncoder {
     //this will only happen in Limited and special game modes.
     //the encoding is simply [count] [cardcode]
     while (byteList.isNotEmpty) {
-      var fourPlusCount = VarintTranslator.PopVarint(byteList);
-      var fourPlusSet = VarintTranslator.PopVarint(byteList);
-      var fourPlusFaction = VarintTranslator.PopVarint(byteList);
-      var fourPlusNumber = VarintTranslator.PopVarint(byteList);
+      int fourPlusCount = VarintTranslator.PopVarint(byteList);
+      int fourPlusSet = VarintTranslator.PopVarint(byteList);
+      int fourPlusFaction = VarintTranslator.PopVarint(byteList);
+      int fourPlusNumber = VarintTranslator.PopVarint(byteList);
 
-      var fourPlusSetString = fourPlusSet.toString().padLeft(2, '0');
-      var fourPlusFactionString = _intIdentifierToFactionCode[fourPlusFaction];
-      var fourPlusNumberString = fourPlusNumber.toString().padLeft(3, '0');
+      String fourPlusSetString = fourPlusSet.toString().padLeft(2, '0');
+      String fourPlusFactionString =
+          _intIdentifierToFactionCode[fourPlusFaction];
+      String fourPlusNumberString = fourPlusNumber.toString().padLeft(3, '0');
 
-      var newEntry = CardCodeAndCount(
+      CardCodeAndCount newEntry = CardCodeAndCount(
           fourPlusSetString + fourPlusFactionString + fourPlusNumberString,
           fourPlusCount);
       result.add(newEntry);

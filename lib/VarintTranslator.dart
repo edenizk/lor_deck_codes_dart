@@ -5,10 +5,10 @@ class VarintTranslator {
   static final _justMSB = 0x80;
 
   static int PopVarint(List<int> bytes) {
-    var result = 0;
-    var currentShift = 0;
-    var bytesPopped = 0;
-    for (var i = 0; i < bytes.length; i++) {
+    int result = 0;
+    int currentShift = 0;
+    int bytesPopped = 0;
+    for (int i = 0; i < bytes.length; i++) {
       bytesPopped++;
       final current = bytes[i] & VarintTranslator._allButMSB;
       result |= current << currentShift;
@@ -25,10 +25,10 @@ class VarintTranslator {
   }
 
   static Uint8List GetVarint(value) {
-    var buff = Uint8List(10);
+    Uint8List buff = Uint8List(10);
     buff.fillRange(0, 10, 0);
 
-    var currentIndex = 0;
+    int currentIndex = 0;
     if (value == 0) {
       return Uint8List.fromList([0]);
     }
