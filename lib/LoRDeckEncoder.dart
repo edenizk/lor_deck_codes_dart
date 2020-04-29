@@ -14,6 +14,7 @@ class LoRDeckEncoder {
     'NX': 3,
     'PZ': 4,
     'SI': 5,
+    'BW': 6
   };
 
   //static Map<int, String> _intIdentifierToFactionCode = HashMap<int, String>();
@@ -24,7 +25,9 @@ class LoRDeckEncoder {
     3: 'NX',
     4: 'PZ',
     5: 'SI',
+    6: 'BW'
   };
+  
   static final int _max_known_version = 1;
 
   //dart does't support static constructor,
