@@ -28,7 +28,7 @@ class LoRDeckEncoder {
     6: 'BW'
   };
   
-  static final int _max_known_version = 1;
+  static final int _max_known_version = 2;
 
   //dart does't support static constructor,
   //until find something works like static constructor
