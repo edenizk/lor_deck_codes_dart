@@ -178,6 +178,18 @@ void main() {
 
     expect(code1, code2);
   });
+  test("BilgewaterSet", () {
+    List<CardCodeAndCount> deck = new List<CardCodeAndCount>();
+    deck.add(CardCodeAndCount("01DE002", 4));
+    deck.add(CardCodeAndCount("02BW003", 2));
+    deck.add(CardCodeAndCount("02BW010", 3));
+    deck.add(CardCodeAndCount("01DE004", 5));
+    
+    var code = LoRDeckEncoder.GetCodeFromDeck(deck);
+    List<CardCodeAndCount> decoded = LoRDeckEncoder.GetDeckFromCode(code);
+
+    expect(true, VerifyRehydration(deck, decoded));
+  });
   test("BadCardCodes", () {
     List<CardCodeAndCount> deck = new List<CardCodeAndCount>();
     deck.add(CardCodeAndCount("01DE02", 1));
