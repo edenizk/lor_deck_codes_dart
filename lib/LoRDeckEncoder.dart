@@ -14,7 +14,8 @@ class LoRDeckEncoder {
     'NX': 3,
     'PZ': 4,
     'SI': 5,
-    'BW': 6
+    'BW': 6,
+    'MT': 9
   };
 
   //static Map<int, String> _intIdentifierToFactionCode = HashMap<int, String>();
@@ -25,7 +26,8 @@ class LoRDeckEncoder {
     3: 'NX',
     4: 'PZ',
     5: 'SI',
-    6: 'BW'
+    6: 'BW',
+    9: 'MT'
   };
   
   static final int _max_known_version = 2;
@@ -113,7 +115,7 @@ class LoRDeckEncoder {
     }
 
     Uint8List formatAndVersion = Uint8List(1); //i.e. 00010001
-    formatAndVersion[0] = 17;
+    formatAndVersion[0] = 18;
     result.add(formatAndVersion);
 
     List<CardCodeAndCount> of3 = <CardCodeAndCount>[];

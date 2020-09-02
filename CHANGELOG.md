@@ -1,3 +1,9 @@
+## 1.0.2
+- Code updated for the new Targon cards
+
+## 1.0.1
+- Code updated for the new Bilgewater cards
+
 ## 1.0.0+4
 - Some typos in LorDeckEncoder.dart fixed
   

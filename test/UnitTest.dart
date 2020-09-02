@@ -192,7 +192,7 @@ void main() {
   });
   test("BadCardCodes", () {
     List<CardCodeAndCount> deck = new List<CardCodeAndCount>();
-    deck.add(CardCodeAndCount("01DE02", 1));
+    deck.add(CardCodeAndCount("01XX02", 1));
     try {
       String code = LoRDeckEncoder.GetCodeFromDeck(deck);
       expect("fail", "");
@@ -266,5 +266,34 @@ void main() {
           LoRDeckEncoder.GetDeckFromCode(badEncodingEmpty);
       expect("fail", "");
     } catch (e) {}
+  });
+  test("Targon", () {
+    List<CardCodeAndCount> deck = List<CardCodeAndCount>();
+    deck.add(CardCodeAndCount("01DE002", 4));
+    deck.add(CardCodeAndCount("03MT003", 2));
+    deck.add(CardCodeAndCount("03MT010", 3));
+    deck.add(CardCodeAndCount("02BW004", 5));
+    deck.add(CardCodeAndCount("01DE005", 3));
+    deck.add(CardCodeAndCount("01DE006", 3));
+    deck.add(CardCodeAndCount("01DE007", 3));
+    deck.add(CardCodeAndCount("01DE008", 3));
+    deck.add(CardCodeAndCount("01DE009", 3));
+    deck.add(CardCodeAndCount("01DE010", 3));
+    deck.add(CardCodeAndCount("01DE011", 3));
+    deck.add(CardCodeAndCount("01IO012", 3));
+    deck.add(CardCodeAndCount("01DE013", 3));
+    deck.add(CardCodeAndCount("01MT014", 3));
+    deck.add(CardCodeAndCount("01DE015", 3));
+    deck.add(CardCodeAndCount("01DE016", 3));
+    deck.add(CardCodeAndCount("01MT017", 3));
+    deck.add(CardCodeAndCount("01DE018", 3));
+    deck.add(CardCodeAndCount("01DE019", 3));
+    deck.add(CardCodeAndCount("01DE020", 3));
+    deck.add(CardCodeAndCount("01DE021", 3));
+
+    var code = LoRDeckEncoder.GetCodeFromDeck(deck);
+    List<CardCodeAndCount> decoded = LoRDeckEncoder.GetDeckFromCode(code);
+
+    expect(true, VerifyRehydration(deck, decoded));
   });
 }
