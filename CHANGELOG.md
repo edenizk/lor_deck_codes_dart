@@ -1,3 +1,6 @@
+## 1.0.2+1
+- Syntaxes fixed according to the dartfmt
+
 ## 1.0.2
 - Code updated for the new Targon cards
 

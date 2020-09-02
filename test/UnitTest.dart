@@ -184,7 +184,7 @@ void main() {
     deck.add(CardCodeAndCount("02BW003", 2));
     deck.add(CardCodeAndCount("02BW010", 3));
     deck.add(CardCodeAndCount("01DE004", 5));
-    
+
     var code = LoRDeckEncoder.GetCodeFromDeck(deck);
     List<CardCodeAndCount> decoded = LoRDeckEncoder.GetDeckFromCode(code);
 
