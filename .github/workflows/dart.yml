@@ -1,0 +1,26 @@
+name: Dart
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+  
+    container:
+      image:  google/dart:latest
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+
+      - name: Print Dart SDK version ✏
+        run: dart --version
+
+      - name: Install dependencies 📦
+        run: dart pub get
+
+      - name: Run tests ⚙
+        run: dart pub run test test/UnitTest.dart
+      
+      - name: Complete 🎉
+        run: echo 🎉🎉🎉
