@@ -29,6 +29,7 @@ jobs:
           
       - name: Dry Run
         uses: k-paxian/dart-package-publisher@v1.3
+        working-directory: ./
         with:
           accessToken: ${{ secrets.OAUTH_ACCESS_TOKEN }}
           refreshToken: ${{ secrets.OAUTH_REFRESH_TOKEN }}
@@ -37,6 +38,7 @@ jobs:
 
       - name: Publishing
         uses: k-paxian/dart-package-publisher@v1.3
+        working-directory: ./
         with:
           accessToken: ${{ secrets.OAUTH_ACCESS_TOKEN }}
           refreshToken: ${{ secrets.OAUTH_REFRESH_TOKEN }}
