@@ -1,5 +1,5 @@
 name: Pub Deploy
-
+# TODO Add container cache for speed up the process
 on: 
   push:
     branches:
@@ -32,6 +32,7 @@ jobs:
         with:
           accessToken: ${{ secrets.OAUTH_ACCESS_TOKEN }}
           refreshToken: ${{ secrets.OAUTH_REFRESH_TOKEN }}
+          credentialJson: ${{ secrets.CREDENTIAL_JSON }}
           dryRunOnly: true
 
       - name: Publishing
@@ -39,6 +40,8 @@ jobs:
         with:
           accessToken: ${{ secrets.OAUTH_ACCESS_TOKEN }}
           refreshToken: ${{ secrets.OAUTH_REFRESH_TOKEN }}
+          credentialJson: ${{ secrets.CREDENTIAL_JSON }}
+          format: true
 
       - name: Complete 🎉
         run: echo 🎉🎉🎉
