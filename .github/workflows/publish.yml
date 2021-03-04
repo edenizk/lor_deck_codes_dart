@@ -2,6 +2,7 @@ name: Pub Deploy
 # TODO 
 # - Add container cache for speed up the process
 # - It runs in the workflows directory find way to work on the root directory of the project
+# - Find better way to publish k-paxian/ package is too long time to load
 on: 
   push:
     branches:
