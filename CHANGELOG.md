@@ -1,3 +1,7 @@
+## 3.0.0
+- Jumping to the version 3 to follow the LoR version system
+- New Shurima decks support added
+- Information added for updating new card
 ## 1.0.2+1
 - Syntaxes fixed according to the dartfmt
 
