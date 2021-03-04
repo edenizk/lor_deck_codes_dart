@@ -29,10 +29,10 @@ jobs:
           
       - name: Dry Run
         uses: k-paxian/dart-package-publisher@v1.3
-        dryRunOnly: true
         with:
           accessToken: ${{ secrets.OAUTH_ACCESS_TOKEN }}
           refreshToken: ${{ secrets.OAUTH_REFRESH_TOKEN }}
+          dryRunOnly: true
 
       - name: Publishing
         uses: k-paxian/dart-package-publisher@v1.3
