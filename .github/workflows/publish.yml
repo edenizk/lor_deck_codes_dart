@@ -1,0 +1,46 @@
+name: Pub Deploy
+
+on: 
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+  
+    container:
+      image:  google/dart:latest
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+
+      - name: Print Dart SDK version ✏
+        run: dart --version
+
+      - name: Install dependencies 📦
+        run: dart pub get
+
+      - name: Run tests ⚙
+        run: | 
+          dart pub run test test/UnitTest.dart
+          echo "Exited with '$?'"
+          
+      - name: Dry Run
+        uses: k-paxian/dart-package-publisher@v1.3
+        dryRunOnly: true
+        with:
+          accessToken: ${{ secrets.OAUTH_ACCESS_TOKEN }}
+          refreshToken: ${{ secrets.OAUTH_REFRESH_TOKEN }}
+        run: echo "Exited with '$?'"
+
+      - name: Publishing
+        uses: k-paxian/dart-package-publisher@v1.3
+        with:
+          accessToken: ${{ secrets.OAUTH_ACCESS_TOKEN }}
+          refreshToken: ${{ secrets.OAUTH_REFRESH_TOKEN }}
+        run: echo "Exited with '$?'"
+      
+      - name: Complete 🎉
+        run: echo 🎉🎉🎉
