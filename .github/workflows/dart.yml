@@ -3,6 +3,8 @@ name: Dart
 on: 
   push:
     branches:
+      - dev
+      - feature/*
       - !master
 
 jobs:
