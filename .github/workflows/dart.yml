@@ -20,7 +20,9 @@ jobs:
         run: dart pub get
 
       - name: Run tests ⚙
-        run: dart pub run test test/UnitTest.dart
+        run: | 
+          dart pub run test test/UnitTest.dart
+          echo "Exited with '$?'"
       
       - name: Complete 🎉
         run: echo 🎉🎉🎉

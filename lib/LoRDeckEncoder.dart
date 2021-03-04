@@ -7,6 +7,7 @@ import 'package:lor_deck_codes_dart/VarintTranslator.dart';
 class LoRDeckEncoder {
   static final int _card_code_length = 7;
   // static Map<String, int> _factionCodeToIntIdentifier = HashMap<String, int>();
+  // Add new class code here with the index number (you can find the iddentifier from https://github.com/RiotGames/LoRDeckCodes)
   static Map<String, int> _factionCodeToIntIdentifier = <String, int>{
     'DE': 0,
     'FR': 1,
@@ -15,10 +16,12 @@ class LoRDeckEncoder {
     'PZ': 4,
     'SI': 5,
     'BW': 6,
+    'SH': 7,
     'MT': 9
   };
 
   //static Map<int, String> _intIdentifierToFactionCode = HashMap<int, String>();
+  // Add new class code here with the index number (you can find the iddentifier from https://github.com/RiotGames/LoRDeckCodes)
   static Map<int, String> _intIdentifierToFactionCode = <int, String>{
     0: 'DE',
     1: 'FR',
@@ -27,10 +30,11 @@ class LoRDeckEncoder {
     4: 'PZ',
     5: 'SI',
     6: 'BW',
+    7: 'SH',
     9: 'MT'
   };
 
-  static final int _max_known_version = 2;
+  static final int _max_known_version = 3; // Increase the version number in case of new deck class added
 
   //dart does't support static constructor,
   //until find something works like static constructor
@@ -115,7 +119,7 @@ class LoRDeckEncoder {
     }
 
     Uint8List formatAndVersion = Uint8List(1); //i.e. 00010001
-    formatAndVersion[0] = 18;
+    formatAndVersion[0] = 19; //i.e. 00010011 Increase this number in case of new class added
     result.add(formatAndVersion);
 
     List<CardCodeAndCount> of3 = <CardCodeAndCount>[];
